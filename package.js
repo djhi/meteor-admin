@@ -12,15 +12,15 @@ Package.on_use(function(api){
   api.versionsFrom('METEOR@0.9.3');
 
   api.use(
-    ['iron:router@0.9.3',
+    ['iron:router',
     'coffeescript',
     'accounts-base',
     'accounts-password',
     'underscore',
-    'aldeed:collection2@2.1.0',
-    'aldeed:autoform@2.0.2 || 3.1.0',
-    'alanning:roles@1.2.13',
-    'raix:handlebar-helpers@0.1.2'
+    'aldeed:collection2',
+    'aldeed:autoform',
+    'alanning:roles',
+    'raix:handlebar-helpers'
     ],
     both);
 
@@ -32,7 +32,7 @@ Package.on_use(function(api){
     'lib/both/AdminDashboard.coffee',
     'lib/both/router.coffee'
     ], both);
-  
+
   api.add_files([
     'lib/client/html/admin_templates.html',
     'lib/client/html/admin_widgets.html',

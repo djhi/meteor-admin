@@ -7,12 +7,16 @@ AdminDashboard =
 	clearAlerts: ->
 		Session.set 'adminSuccess', null
 		Session.set 'adminError', null
+		@next()
 
 	checkAdmin: ->
 		if not Roles.userIsInRole Meteor.userId(), ['admin']
 			Meteor.call 'adminCheckAdmin'
 			if (typeof AdminConfig?.nonAdminRedirectRoute == "string")
-			  Router.go AdminConfig.nonAdminRedirectRoute 
+			  Router.go AdminConfig.nonAdminRedirectRoute
+			@next()
+		@next()
+
 	adminRoutes: ['adminDashboard','adminDashboardUsersNew','adminDashboardUsersView','adminDashboardUsersEdit','adminDashboardView','adminDashboardNew','adminDashboardEdit','adminDashboardDetail']
 	collectionLabel: (collection)->
 		if collection == 'Users'
@@ -23,7 +27,7 @@ AdminDashboard =
 
 
 AdminDashboard.schemas.newUser = new SimpleSchema
-	email: 
+	email:
 		type: String
 		label: "Email address"
 	chooseOwnPassword:
